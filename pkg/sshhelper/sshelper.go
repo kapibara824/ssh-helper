@@ -31,7 +31,7 @@ func Run(config Config, cmd string) (string, error) {
 	}
 	defer session.Close()
 	var buf bytes.Buffer
-
+	session.Stdout = &buf
 	if err := session.Run(cmd); err != nil {
 		return buf.String(), err
 	}
